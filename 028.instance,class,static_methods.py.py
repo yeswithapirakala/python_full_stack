@@ -1,52 +1,89 @@
-#inheritance
-#creating child and parent class
-#method overriding
-#operator overloading
-#the super() function
-#understang types of inheritance
-#single inheritance
-#multiple inheritance
-#multilevel inheritance
-#hierarchical inheritance
+#instance methods
+#instance methods are the methods that are defined inside the class and are used to access the instance variables of the class.
+#instance methods are called using the object of the class.
+#instance methods can access the instance variables and class variables.
+#instance methods can modify the instance variables and class variables.
+class student:
+  school_name = "bangtan school"
 
-#oops
-#object oriented programming
-#OOP (Object-Oriented Programming) in Python is a programming paradigm that organizes software design around "objects" rather than "functions and logic." It focuses on creating reusable and modular code through the use of
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
 
-#class --blueprint of an object
-#syntax: class class_name:
-#class contains attributes and methods
-#attributes--variables
-#methods--functions
+  #instance method
+  def change_name(self, new_name):
+    self.school_name = new_name
+    print(f"school name changed to {self.school_name}")
 
-#object--instance of a class
-#syntax: object_name=class_name()
-#object _name is any variable name
-#object_name.attribute_name
-#we can create multiple objects of a class
-
-class student:#class
-  school_name="bangtan school"#class variable -tha variable that is defined inside the class but outside the constructor
-  def __init__(self,name,age): #constructor--a special member method within a class that automatically runs when an object of that class is created.
-    self.name=name#instance variable
-    self.age=age#instance variable
 
 #object
-s1=student("Hexley",20)
-print(s1.name,s1.age)
-print(student.school_name,"\n")
-
-#2nd object
-s2=student("John",21)
-print(s2.name)
-s2.name="Doe"
-print("updated name of jhon:",s2.name)
-print(s2.age,"\n")
+s1 = student("harry", 26)  #constructor called
+print(s1.name, s1.age)
+print(student.school_name)
+s1.change_name("Purple Heart Academy")  #instance method called
+#why s1.change_name why not student.change_name?
+#we use s1.change_name because it’s an instance method that needs an object (self) to work on.If you want to change the school name for the whole class, you should use a class method instead.
+print(student.school_name, "\n")
 
 
+#class methods
+#class methods are the methods that are defined inside the class and are used to access the class variables of the class.
+#class methods are called using the class name.
+class student:
+  school_name = "bangtan school"
+
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  #class method
+  @classmethod
+  def change_school_name(
+      cls, new_name
+  ):  #cIn a class method, the first parameter is cls, which represents the class itself (just like self represents the object in an instance method). cls is not a keyword—you could technically name it anything—but by convention, we use cls.
+    cls.school_name = new_name
+    print(f"school name changed to {cls.school_name} \n")
+
+  #instance method
+  def display(self):
+    return f"name:{self.name},age:{self.age}"
 
 
-#constructor
+#object
+s1 = student("jeon", 26)
+print(s1.display())
+print(f"before changing: {student.school_name} ")
+student.change_school_name("Purple Heart Academy")
+
+#static methods
+#A static method is a method inside a class that does not depend on either the instance (self) or the class (cls).
+#It behaves just like a regular function, but it’s placed inside a class for better organization.
+#Defined with the @staticmethod decorator.
+
+
+class student:
+  school_name = "bangtan school"
+
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  #static method
+  @staticmethod
+  def change_school_name(new_name):
+    school_name = new_name
+    print(f"school name changed to {school_name}")
+
+
+#object
+s1 = student("tae", 27)
+print(s1.name, s1.age)
+print(student.school_name)
+student.change_school_name("Purple Heart Academy")
+
+
+
+
 
 
 
